@@ -1,51 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Management with Filter</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User List</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>User Management App</h2>
 
-        <!-- User Form -->
-        <form id="userForm">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Enter user name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Enter user email" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" id="submitBtn">Add User</button>
-            </div>
-        </form>
+  <div class="container">
+    <h2>User List</h2>
+    <input type="text" id="userNameInput" placeholder="Enter user name">
+    <button onclick="addUser()">Add User</button>
 
-        <!-- Filter Users -->
-        <div class="form-group">
-            <label for="filter">Filter Users:</label>
-            <input type="text" id="filter" placeholder="Search by name or email">
-        </div>
+    <table id="userTable">
+      <tbody>
+        <!-- User rows will be added here dynamically -->
+      </tbody>
+    </table>
+  </div>
 
-        <!-- User List Table -->
-        <table id="userTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Users will be added here dynamically -->
-            </tbody>
-        </table>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
