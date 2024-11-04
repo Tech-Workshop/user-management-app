@@ -1,45 +1,53 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const userForm = document.getElementById('user-form');
-  const userNameInput = document.getElementById('user-name');
-  const userList = document.getElementById('user-list');
-  let users = [];
+let users = ['Sunitha', 'Poorany', 'Viswa', 'Shyam'];
+let editIndex = null;
 
-  function renderUserList() {
-      userList.innerHTML = '';
-      users.forEach((user, index) => {
-          const li = document.createElement('li');
-          li.className = 'user-item';
-          li.innerHTML = `
-              <span>${user.name}</span>
-              <div>
-                  <button onclick="editUser(${index})">Edit</button>
-                  <button onclick="deleteUser(${index})">Delete</button>
-              </div>
-          `;
-          userList.appendChild(li);
-      });
+function renderUserTable() {
+  const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+  userTable.innerHTML = '';
+
+  users.forEach((user, index) => {
+    const row = userTable.insertRow();
+
+    const nameCell = row.insertCell(0);
+    nameCell.textContent = user;
+
+    const actionCell = row.insertCell(1);
+    actionCell.innerHTML = `
+      <button class="edit" onclick="editUser(${index})">Edit</button>
+      <button class="delete" onclick="deleteUser(${index})">Delete</button>
+    `;
+  });
+}
+
+function addUser() {
+  const userNameInput = document.getElementById('userNameInput');
+  const userName = userNameInput.value.trim();
+
+  if (!userName) {
+    alert('Please enter a user name.');
+    return;
   }
 
-  userForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const userName = userNameInput.value.trim();
-      if (userName) {
-          users.push({ name: userName });
-          userNameInput.value = '';
-          renderUserList();
-      }
-  });
+  if (editIndex !== null) {
+    users[editIndex] = userName;
+    editIndex = null;
+  } else {
+    users.push(userName);
+  }
 
-  window.editUser = (index) => {
-      const userName = prompt("Edit user name:", users[index].name);
-      if (userName) {
-          users[index].name = userName;
-          renderUserList();
-      }
-  };
+  userNameInput.value = '';
+  renderUserTable();
+}
 
-  window.deleteUser = (index) => {
-      users.splice(index, 1);
-      renderUserList();
-  };
-});
+function editUser(index) {
+  const userNameInput = document.getElementById('userNameInput');
+  userNameInput.value = users[index];
+  editIndex = index;
+}
+
+function deleteUser(index) {
+  users.splice(index, 1);
+  renderUserTable();
+}
+
+window.onload = renderUserTable;
