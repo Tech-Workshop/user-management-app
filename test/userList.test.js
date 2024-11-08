@@ -1,4 +1,5 @@
-const { addUser, editUser, deleteUser, renderUserTable } = require('./script'); // Adjust the path to your script.js file
+// const { addUser, editUser, deleteUser, renderUserTable } = require('../script'); // Adjust the path to your script.js file
+import {renderUserTable} from '../script'
 
 document.body.innerHTML = `
   <input type="text" id="userNameInput" />
@@ -10,7 +11,7 @@ document.body.innerHTML = `
 describe('User List Management', () => {
   beforeEach(() => {
     // Reset the list and input field before each test
-    users = ['Sunitha', 'Poorany', 'Viswa', 'Shyam'];
+    const users = ['Sunitha', 'Poorany', 'Viswa', 'Shyam'];
     document.getElementById('userNameInput').value = '';
     renderUserTable();
   });

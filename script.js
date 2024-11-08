@@ -50,4 +50,6 @@ function deleteUser(index) {
   renderUserTable();
 }
 
+
 window.onload = renderUserTable;
+
