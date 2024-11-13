@@ -2,30 +2,30 @@
 
 ## To get User Management App from github
 
-'''jsx
+'''sh
 git clone https://github.com/Tech-Workshop/user-management-app.git
 '''
  
 ## 2 Change current folder to project
 
-''' jsx
+''' sh
 cd user-management-app
 '''
  
 ## 3 Install Npm packages in Node Modules
 
-'''jsx 
+'''sh 
 npm install
 '''
  
 ## 4 To run cypress in Interactive Mode
 
-'''jsx 
+'''sh 
 npx cypress open
 '''
  
 ## 5 To run cypress in Headless Mode
 
-'''jsx 
+'''sh 
 npx cypress run 
 '''
